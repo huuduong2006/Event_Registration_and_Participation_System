@@ -1,1 +1,1 @@
-# H-th-ng-ng-k-v-tham-gia-s-ki-n
+Event Registration and Participation System
