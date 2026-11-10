@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f172a">
+<link rel="manifest" href="/manifest.webmanifest">
+<title>Check-in Staff</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Đăng nhập -->
+<section id="view-login" class="view">
+  <form id="login-form" class="card">
+    <h1>Check-in Staff</h1>
+    <label>Tên đăng nhập <input id="username" autocomplete="username" required></label>
+    <label>Mật khẩu <input id="password" type="password" autocomplete="current-password" required></label>
+    <p id="login-error" class="error" hidden></p>
+    <button class="btn primary" type="submit">Đăng nhập</button>
+  </form>
+</section>
+
+<!-- Chọn sự kiện -->
+<section id="view-events" class="view" hidden>
+  <header class="topbar"><strong>Chọn sự kiện</strong><button id="btn-logout" class="link">Đăng xuất</button></header>
+  <ul id="event-list" class="list"></ul>
+</section>
+
+<!-- Màn hình check-in -->
+<section id="view-main" class="view" hidden>
+  <header class="topbar">
+    <button id="btn-back" class="link">‹ Sự kiện</button>
+    <strong id="event-name"></strong>
+    <span id="net" class="net ok" title="Kết nối">●</span>
+  </header>
+
+  <div class="stats">
+    <div><b id="st-in">0</b><small>Đã check-in</small></div>
+    <div><b id="st-rem">0</b><small>Còn lại</small></div>
+    <div><b id="st-total">0</b><small>Tổng vé</small></div>
+  </div>
+  <div class="progress"><span id="st-bar"></span></div>
+
+  <nav class="tabs">
+    <button data-tab="scan" class="active">Quét QR</button>
+    <button data-tab="manual">Thủ công</button>
+    <button data-tab="recent">Lịch sử</button>
+  </nav>
+
+  <!-- Tab quét -->
+  <div id="tab-scan" class="tab">
+    <div class="scanner-wrap">
+      <div id="reader"></div>
+      <p id="cam-msg" class="hint">Đang khởi động camera…</p>
+    </div>
+    <div class="row">
+      <button id="btn-torch" class="btn" hidden>🔦 Đèn flash</button>
+      <button id="btn-cam-switch" class="btn" hidden>🔄 Đổi camera</button>
+    </div>
+    <label class="hint">Máy quét USB/Bluetooth: bấm vào ô này rồi quét
+      <input id="wedge" placeholder="Ô nhận từ máy quét cầm tay" autocomplete="off">
+    </label>
+  </div>
+
+  <!-- Tab thủ công -->
+  <div id="tab-manual" class="tab" hidden>
+    <p class="hint">Dùng khi khách quên vé nhưng có giấy tờ tùy thân hợp lệ.</p>
+    <input id="search" type="search" placeholder="Tìm theo tên / email / SĐT (≥ 2 ký tự)" autocomplete="off">
+    <ul id="search-results" class="list"></ul>
+  </div>
+
+  <!-- Tab lịch sử -->
+  <div id="tab-recent" class="tab" hidden>
+    <ul id="recent-list" class="list"></ul>
+  </div>
+</section>
+
+<!-- Overlay kết quả toàn màn hình -->
+<div id="result" class="result" hidden>
+  <div class="result-icon" id="r-icon"></div>
+  <h2 id="r-title"></h2>
+  <p id="r-name" class="r-name"></p>
+  <p id="r-ticket" class="r-ticket"></p>
+  <p id="r-msg"></p>
+  <button id="r-close" class="btn big">Quét tiếp</button>
+</div>
+
+<!-- Hộp thoại check-in thủ công -->
+<dialog id="manual-dialog">
+  <form method="dialog" id="manual-form">
+    <h3 id="md-name"></h3>
+    <p id="md-info" class="hint"></p>
+    <label>Giấy tờ đã đối chiếu (bắt buộc)
+      <input id="md-note" placeholder="VD: CCCD, 4 số cuối 1234" required minlength="3">
+    </label>
+    <div class="row">
+      <button value="cancel" class="btn" type="button" id="md-cancel">Huỷ</button>
+      <button class="btn primary" type="submit">Xác nhận check-in</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="/vendor/html5-qrcode/html5-qrcode.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>
