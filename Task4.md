@@ -1,4 +1,6 @@
-# Event Staff – Check-in Module
+# Event Registration and Participation System
+
+## Event Staff – Check-in Module
 
 Phạm vi: **Task 4.1** (giao diện web/mobile cho staff quét QR) và **Task 4.2** (logic xử lý check-in tại cổng).
 
