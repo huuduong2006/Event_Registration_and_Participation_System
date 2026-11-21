@@ -1,0 +1,14 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Đăng nhập</title><link rel="stylesheet" href="/assets/shared.css"></head>
+<body><header class="topbar" id="topbar"></header>
+<main class="wrap"><div class="card"><div class="tabs"><button class="on" data-tab="login">Đăng nhập</button><button data-tab="register">Tạo tài khoản</button></div>
+<div id="msg" class="alert" hidden></div>
+<form id="login" novalidate><label>Email<input name="email" type="email" autocomplete="username"></label>
+<label>Mật khẩu<input name="password" type="password" autocomplete="current-password"></label><button class="btn primary" style="width:100%">Đăng nhập</button></form>
+<form id="register" hidden novalidate><label>Họ và tên<input name="fullName" autocomplete="name"></label>
+<label>Email<input name="email" type="email" autocomplete="username"></label>
+<label>Số điện thoại<input name="phoneNumber" type="tel" placeholder="0901234567"></label>
+<label>Mật khẩu (8–72 ký tự)<input name="password" type="password" autocomplete="new-password"></label>
+<button class="btn primary" style="width:100%">Tạo tài khoản</button></form></div>
+<p class="small mute">Bạn là nhân viên hoặc quản trị viên? <a href="/staff/">Vào cổng nội bộ</a>. Tài khoản nhân viên do Administrator cấp.</p></main>
+<script src="/assets/common.js"></script><script src="/assets/attendee.js"></script><script src="/portal/login.js"></script></body></html>

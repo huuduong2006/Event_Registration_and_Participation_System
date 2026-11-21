@@ -1,0 +1,29 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f172a">
+<title>Check-in – Nhân viên</title><link rel="stylesheet" href="/staff/staff.css"></head>
+<body><div class="view">
+<section id="login" class="panel" hidden><h1>🎫 Check-in</h1><p class="mute small">Đăng nhập bằng tài khoản do Administrator cấp.</p>
+<p id="lerr" class="err" hidden></p>
+<form id="lform" style="display:grid;gap:14px"><label>Email<input name="email" type="email" autocomplete="username" required></label>
+<label>Mật khẩu<input name="password" type="password" autocomplete="current-password" required></label><button class="btn primary">Đăng nhập</button></form>
+<a class="link" href="/">← Về cổng khách tham dự</a></section>
+
+<section id="home" hidden><div class="top"><strong id="hello"></strong><button class="link" id="logout">Đăng xuất</button></div>
+<h2 class="pad">Lịch trực của bạn</h2><ul class="list" id="sched"></ul></section>
+
+<section id="gate" hidden><div class="top"><button class="link" id="back">‹ Lịch</button><strong id="gtitle"></strong><span class="tag" id="gshift"></span></div>
+<p class="pad small mute" id="garea"></p>
+<div class="stats"><div><b id="sReg">–</b><small>Đăng ký</small></div><div><b id="sIn">–</b><small>Đã vào</small></div><div><b id="sLeft">–</b><small>Còn lại</small></div></div>
+<div class="progress"><span id="bar"></span></div>
+<div class="tabs"><button class="on" data-tab="scan">Quét QR</button><button data-tab="find">Tìm khách</button><button data-tab="recent">Gần đây</button></div>
+<div id="t-scan"><div class="cam"><div id="reader"></div></div><p class="pad small mute" id="camMsg"></p>
+<form class="pad" id="codeForm" style="display:grid;gap:8px"><label>Máy quét / nhập mã vé<input id="codeIn" autocomplete="off" placeholder="Quét hoặc dán mã rồi Enter"></label></form></div>
+<div id="t-find" hidden><div class="pad"><input id="q" placeholder="Tên, email, SĐT hoặc mã đăng ký (≥2 ký tự)" autocomplete="off"></div><ul class="list" id="found"></ul></div>
+<div id="t-recent" hidden><ul class="list" id="recent"></ul></div></section>
+
+<section id="result" class="result" hidden><div class="icon" id="rIcon"></div><h2 id="rTitle"></h2><div class="name" id="rName"></div><div id="rTicket"></div><p id="rMsg"></p><button class="btn big" id="rOk">Tiếp tục</button></section>
+<dialog id="dlg"><form id="dform"><h2>Check-in thủ công</h2><p class="mute small" id="dwho"></p>
+<label>Giấy tờ đã đối chiếu (VD: CCCD)<input id="note" placeholder="CCCD, hộ chiếu…" required></label><p class="err" id="derr" hidden></p>
+<div style="display:flex;gap:8px"><button type="button" class="btn" id="dcancel" style="flex:1">Huỷ</button><button class="btn primary" style="flex:1">Xác nhận</button></div></form></dialog>
+</div>
+<script src="/assets/common.js"></script><script src="/vendor/html5-qrcode/html5-qrcode.min.js"></script><script src="/staff/staff.js"></script></body></html>

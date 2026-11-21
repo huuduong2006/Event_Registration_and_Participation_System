@@ -1,0 +1,14 @@
+.git
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+tests
+data.sqlite*
+outbox
+demo-qr
+.env
+*.zip
+README.md
+Caddyfile
+docker-compose.yml

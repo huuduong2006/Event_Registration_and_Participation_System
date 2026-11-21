@@ -1,0 +1,39 @@
+# Chạy thử / VPS:
+#   docker compose up -d --build                    -> http://localhost:8000          (HTTP, để thử)
+#   docker compose --profile https up -d --build    -> https://$DOMAIN                (HTTPS tự động, dùng khi lên web)
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Caddy nằm trong mạng nội bộ Docker nên tin header X-Forwarded-For của nó
+      FORWARDED_ALLOW_IPS: "*"
+    volumes:
+      - appdata:/data              # SQLite + outbox: KHÔNG mất khi build lại / khởi động lại
+    ports:
+      - "127.0.0.1:${APP_PORT:-8000}:8000"   # chỉ mở cho chính máy chủ; ra Internet phải qua Caddy (HTTPS)
+    networks: [web]
+
+  caddy:
+    profiles: ["https"]
+    image: caddy:2
+    restart: unless-stopped
+    depends_on: [app]
+    env_file: .env
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data           # lưu chứng chỉ HTTPS
+      - caddy_config:/config
+    networks: [web]
+
+volumes:
+  appdata:
+  caddy_data:
+  caddy_config:
+
+networks:
+  web:

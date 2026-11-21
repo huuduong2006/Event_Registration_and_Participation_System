@@ -1,0 +1,18 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quản trị sự kiện</title><link rel="stylesheet" href="/assets/shared.css"></head>
+<body>
+<section id="login" class="wrap" hidden><div class="card"><h1>Cổng nội bộ – Administrator</h1>
+<p class="mute small">Tài khoản do hệ thống cấp. Nhân viên soát vé đăng nhập tại <a href="/staff/">/staff/</a>.</p>
+<div id="lmsg" class="alert err" hidden></div>
+<form id="lform"><label>Email<input name="email" type="email" autocomplete="username" required></label>
+<label>Mật khẩu<input name="password" type="password" autocomplete="current-password" required></label>
+<button class="btn primary" style="width:100%">Đăng nhập</button></form></div></section>
+<div id="shell" hidden>
+<header class="topbar"><a class="brand" href="/admin/">⚙️ Quản trị sự kiện</a>
+<button class="btn sm" data-act="nav" data-view="events">Sự kiện</button><button class="btn sm" data-act="nav" data-view="staff">Nhân viên</button>
+<span class="small mute" id="who"></span><button class="btn sm" data-act="logout">Đăng xuất</button></header>
+<main class="wrap wide" id="app"></main></div>
+<dialog id="dlg"><form id="dform" method="dialog" novalidate><h2 id="dtitle"></h2><div id="dmsg" class="alert err" hidden></div>
+<div id="dbody"></div><div class="row" style="justify-content:flex-end;margin-top:8px"><button class="btn" type="button" data-act="dclose">Huỷ</button>
+<button class="btn primary" id="dok">Lưu</button></div></form></dialog>
+<script src="/assets/common.js"></script><script src="/vendor/chartjs/chart.umd.min.js"></script><script src="/admin/admin.js"></script></body></html>
